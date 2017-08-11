@@ -2,6 +2,9 @@
 # include <Siv3D.hpp>
 # include "Scene.hpp"
 
+namespace RRYY {
+    const auto FadeTime = 0.1s;
+}
 struct Article
 {
     String title;

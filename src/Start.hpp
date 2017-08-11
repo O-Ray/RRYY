@@ -4,11 +4,11 @@
 
 struct Start : MyApp::Scene //start画面
 {
-    const Circle back_button = Circle(960,900,60);
-    const Texture back_icon = Texture(Icon(0xf112,60));
-    const Texture detail_icon = Texture(Icon(0xf0c9,45));
-    const Font news_font = Font(45);
-    const Font news_preview_font = Font(20);
+    const Circle m_backButton = Circle(960,900,60);
+    const Texture m_backIcon = Texture(Icon(0xf112,60));
+    const Texture m_dataIcon = Texture(Icon(0xf0c9,45));
+    const Font m_newsFont = Font(45);
+    const Font m_newsPreviewFont = Font(20);
     
     Start(const InitData& init)
     : IScene(init)
@@ -23,9 +23,9 @@ struct Start : MyApp::Scene //start画面
     
     void update() override
     {
-        if (back_button.leftClicked())
+        if (m_backButton.leftClicked())
         {
-            changeScene(L"Title", 2s);
+            changeScene(L"Title", RRYY::FadeTime);
         }
         
         const auto& articles = getData().articles;
@@ -35,7 +35,7 @@ struct Start : MyApp::Scene //start画面
             if(rect.leftClicked())
             {
                 getData().articlesIndex = i;
-                changeScene(L"News", 2s);
+                changeScene(L"News", RRYY::FadeTime);
             }
         }
         
@@ -48,13 +48,13 @@ struct Start : MyApp::Scene //start画面
         {
             Rect rect(50,i * 100 + 50,1200,60);
             rect.draw(Palette::Gray);
-            news_font(articles[i].title).draw(rect.pos);
-            news_preview_font(articles[i].preview).draw(rect.x + 800,rect.y + 15);
-            detail_icon.drawAt(rect.x + 1150,rect.center().y);
+            m_newsFont(articles[i].title).draw(rect.pos);
+            m_newsPreviewFont(articles[i].preview).draw(rect.x + 800,rect.y + 15);
+            m_dataIcon.drawAt(rect.x + 1150,rect.center().y);
         }
         
-        back_button.draw(Palette::Orange);
-        back_icon.drawAt(back_button.center);
+        m_backButton.draw(Palette::Orange);
+        m_backIcon.drawAt(m_backButton.center);
     }
 };
 

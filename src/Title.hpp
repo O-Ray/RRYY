@@ -4,15 +4,15 @@
 
 struct Title : MyApp::Scene  //タイトル画面
 {
-    const Font font_title = Font(140);
-    const Texture setting_icon = Texture(Icon(0xf013,300));
-    const Texture start_icon = Texture(Icon(0xf1ea,300));
-    const Texture exit_icon = Texture(Icon(0xf2d4,300));
-    const Size button_size = Size(570,324);
-    const double button_r = 30;
-    const RoundRect setting_button = RoundRect(Rect(Arg::center(320,700),button_size),button_r);
-    const RoundRect start_button = RoundRect(Rect(Arg::center(960,700),button_size),button_r);
-    const RoundRect exit_button = RoundRect(Rect(Arg::center(1600,700),button_size),button_r);
+    const Font m_fontTitle = Font(140);
+    const Texture m_settingIcon = Texture(Icon(0xf013,300));
+    const Texture m_startIcon = Texture(Icon(0xf1ea,300));
+    const Texture m_exitIcon = Texture(Icon(0xf2d4,300));
+    const Size m_buttonSize = Size(570,324);
+    const double m_buttonR = 30;
+    const RoundRect m_settingButton = RoundRect(Rect(Arg::center(320,700),m_buttonSize),m_buttonR);
+    const RoundRect m_startButton = RoundRect(Rect(Arg::center(960,700),m_buttonSize),m_buttonR);
+    const RoundRect m_exitButton = RoundRect(Rect(Arg::center(1600,700),m_buttonSize),m_buttonR);
     
     Title(const InitData& init)
     : IScene(init)
@@ -22,15 +22,15 @@ struct Title : MyApp::Scene  //タイトル画面
     
     void update() override
     {
-        if (setting_button.leftClicked())
+        if (m_settingButton.leftClicked())
         {
-            changeScene(L"Setting", 2s);
+            changeScene(L"Setting", RRYY::FadeTime);
         }
-        else if (start_button.leftClicked())
+        else if (m_startButton.leftClicked())
         {
-            changeScene(L"Start", 2s);
+            changeScene(L"Start", RRYY::FadeTime);
         }
-        else if (exit_button.leftClicked())
+        else if (m_exitButton.leftClicked())
         {
             System::Exit();//終了する
         }
@@ -38,12 +38,12 @@ struct Title : MyApp::Scene  //タイトル画面
     
     void draw() const override
     {
-        font_title(L"らくらく読み読み").drawAt(960,260,Palette::Black);
-        setting_button.draw(Palette::Lightgreen);
-        setting_icon.drawAt(setting_button.center());
-        start_button.draw(Palette::Lightgreen);
-        start_icon.drawAt(start_button.center());
-        exit_button.draw(Palette::Lightgreen);
-        exit_icon.drawAt(exit_button.center());
+        m_fontTitle(L"らくらく読み読み").drawAt(960,260,Palette::Black);
+        m_settingButton.draw(Palette::Lightgreen);
+        m_settingIcon.drawAt(m_settingButton.center());
+        m_startButton.draw(Palette::Lightgreen);
+        m_startIcon.drawAt(m_startButton.center());
+        m_exitButton.draw(Palette::Lightgreen);
+        m_exitIcon.drawAt(m_exitButton.center());
     }
 };

@@ -17,7 +17,8 @@ void Main()
     }
     
     ScalableWindow::SetBaseSize(1920, 1080);
-    Graphics::SetFullScreen(true, Size(1440, 900));
+    //    Graphics::SetFullScreen(true, Size(1440, 900));
+    Graphics::SetFullScreen(true, Size(1920, 1080));
     Graphics::SetBackground(Palette::White);
     
     MyApp manager;
@@ -26,6 +27,8 @@ void Main()
     .add<Setting>(L"Setting")
     .add<Start>(L"Start")
     .add<News>(L"News");
+
+    manager.setFadeColor(Palette::White);
     
     while (System::Update())
     {
