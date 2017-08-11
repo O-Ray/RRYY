@@ -47,7 +47,7 @@ struct News : MyApp::Scene //開いた画面
             m_newsFont = Font(m_fontSize);
         }
         
-        m_scroll += (Mouse::Wheel() * 2);
+        m_scroll += (Mouse::Wheel() * 30);
         
         Vec2 penPos(50,100 - m_scroll);
         int i = 0;//下のループした回数
@@ -62,7 +62,7 @@ struct News : MyApp::Scene //開いた画面
             }
             
             const RectF area(penPos,glyph.xAdvance,m_newsFont.height());
-            if(area.leftPressed() && i > m_readIndex && m_clickCount != 0)
+            if(area.leftPressed() && m_clickCount != 0)
             {
                 m_readIndex = i;
             }

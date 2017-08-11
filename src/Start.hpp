@@ -26,6 +26,14 @@ struct Start : MyApp::Scene //start画面
         getData().articles.push_back(LoadArticle(L"news/news2.txt"));
         getData().articles.push_back(LoadArticle(L"news/news3.txt"));
         getData().articles.push_back(LoadArticle(L"news/news4.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news5.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news6.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news7.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news8.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news9.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news10.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news11.txt"));
+        getData().articles.push_back(LoadArticle(L"news/news12.txt"));
     }
     
     void update() override

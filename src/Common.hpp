@@ -41,7 +41,7 @@ struct AppData
         Color(L"#000000")
     };
     int backgroundColorIndex = 5;//背景色のカラー配列index
-    int taxtColorIndex = 5;//記事のテキストのカラー配列index
+    int taxtColorIndex = 9;//記事のテキストのカラー配列index
     int markerColorIndex = 5;//記事に引くマーカーのカラー配列index
     
     ColorF getBackgroundColor()const//現在の背景色を返す
