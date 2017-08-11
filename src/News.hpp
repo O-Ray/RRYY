@@ -2,17 +2,21 @@
 # include <Siv3D.hpp>
 # include "Common.hpp"
 
+
 struct News : MyApp::Scene //開いた画面
 {
     Circle m_backButton = Circle(960,900,60);
-    const Texture m_newsFontSizeUpIcon = Texture(Icon(0xf00e,60));
-    const Texture m_newsFontSizeDownIcon = Texture(Icon(0xf010,60));
-    const Circle m_newsFontSizeUpButton = Circle(300,60,35);
-    const Circle m_newsFontSizeDownButton = Circle(450,60,35);
+    const Texture m_zoomInIcon = Texture(Icon(0xf00e,60));
+    const Texture m_zoomOutIcon = Texture(Icon(0xf010,60));
+    const Circle m_zoomInButton = Circle(300,60,35);
+    const Circle m_zoomOutButton = Circle(450,60,35);
     const Texture m_backIcon = Texture(Icon(0xf112,60));
-    int m_newsFontSize = 40;
+    const Rect m_scrollBar = Rect(1800,0,50,100);
+    int m_fontSize = 40;
+    int m_readIndex = 0;
+    int m_clickCount = 0;
     double m_scroll = 0;
-    Font m_newsFont = Font(m_newsFontSize);
+    Font m_newsFont = Font(m_fontSize);
     
     News(const InitData& init)
     : IScene(init)
@@ -22,51 +26,90 @@ struct News : MyApp::Scene //開いた画面
     
     void update() override
     {
+        if(MouseL.down())
+        {
+            ++m_clickCount;
+        }
+        
         if (m_backButton.leftClicked())
         {
             changeScene(L"Start", RRYY::FadeTime);
         }
-        if (m_newsFontSizeUpButton.leftClicked())
+        
+        if (m_zoomInButton.leftClicked())
         {
-            m_newsFontSize += 5;
-            m_newsFont = Font(m_newsFontSize);
+            m_fontSize += 5;
+            m_newsFont = Font(m_fontSize);
         }
-        else if (m_newsFontSizeDownButton.leftClicked())
+        else if (m_zoomOutButton.leftClicked())
         {
-            m_newsFontSize -= 5;
-            m_newsFont = Font(m_newsFontSize);
+            m_fontSize -= 5;
+            m_newsFont = Font(m_fontSize);
         }
+        
         m_scroll += (Mouse::Wheel() * 2);
+        
         Vec2 penPos(50,100 - m_scroll);
-        for (auto glyph:m_newsFont(getData().articles[getData().articlesIndex].body))
+        int i = 0;//下のループした回数
+        for (auto glyph : m_newsFont(getData().getArticle().body))
         {
-            penPos.x += glyph.xAdvance;
-            if(penPos.x > 1800){
+            ++i;
+            
+            if(penPos.x + glyph.xAdvance > m_scrollBar.x - 40)
+            {
                 penPos.x = 50;
                 penPos.y += m_newsFont.height() + 5;
             }
+            
+            const RectF area(penPos,glyph.xAdvance,m_newsFont.height());
+            if(area.leftPressed() && i > m_readIndex && m_clickCount != 0)
+            {
+                m_readIndex = i;
+            }
+            
+            penPos.x += glyph.xAdvance;
         }
+             
         m_backButton = Circle(960,penPos.y + m_newsFont.height() + 100,60);
     }
     
     void draw() const override
     {
+        Graphics::SetBackground(getData().getBackgroundColor());
+        
         Vec2 penPos(50,100 - m_scroll);
-        for (auto glyph:m_newsFont(getData().articles[getData().articlesIndex].body))
+        int i = 0;//下のループした回数
+        for (auto glyph : m_newsFont(getData().getArticle().body))
         {
-            glyph.texture.draw(penPos + glyph.offset,Palette::Black);
-            penPos.x += glyph.xAdvance;
-            if(penPos.x > 1800){
+            ++i;
+            
+            if(penPos.x + glyph.xAdvance > m_scrollBar.x - 40)
+            {
                 penPos.x = 50;
                 penPos.y += m_newsFont.height() + 5;
             }
+            
+            if(i <= m_readIndex)
+            {
+                const RectF area(penPos,glyph.xAdvance,m_newsFont.height());
+                area.draw(getData().getMarkerColor());
+            }
+            
+            glyph.texture.draw(penPos + glyph.offset,getData().getTaxtColor());
+            
+            penPos.x += glyph.xAdvance;
         }
+        
+        m_zoomInButton.draw(Palette::White).drawFrame(1,1,Palette::Black);
+        m_zoomInIcon.drawAt(m_zoomInButton.center,Palette::Black);
+        
+        m_zoomOutButton.draw(Palette::White).drawFrame(1,1,Palette::Black);
+        m_zoomOutIcon.drawAt(m_zoomOutButton.center,Palette::Black);
+        
         m_backButton.draw(Palette::Orange);
-        m_newsFontSizeUpButton.draw(Palette::White).drawFrame(1,1,Palette::Black);
-        m_newsFontSizeDownButton.draw(Palette::White).drawFrame(1,1,Palette::Black);
-        m_newsFontSizeUpIcon.drawAt(m_newsFontSizeUpButton.center,Palette::Black);
-        m_newsFontSizeDownIcon.drawAt(m_newsFontSizeDownButton.center,Palette::Black);
         m_backIcon.drawAt(m_backButton.center);
+        
+        m_scrollBar.draw(Palette::Gray);
     }
 };
 

@@ -6,19 +6,27 @@
 # include "Start.hpp"
 # include "News.hpp"
 
-void Main()
+void SetFullScreen()
 {
     for(auto output: Graphics::EnumOutputs())
     {
         for(auto mode : output.displayModes)
         {
-//            Print << mode.size;
+            //            Print << mode.size;
         }
     }
     
     ScalableWindow::SetBaseSize(1920, 1080);
-    //    Graphics::SetFullScreen(true, Size(1440, 900));
-    Graphics::SetFullScreen(true, Size(1920, 1080));
+    //Graphics::SetFullScreen(true, Size(1440, 900));
+    //Graphics::SetFullScreen(true, Size(1920, 1080));
+    
+    const Size fullScreenSize = Graphics::EnumOutputs().front().displayModes.back().size;
+    Graphics::SetFullScreen(true, fullScreenSize);
+}
+
+void Main()
+{
+    SetFullScreen();
     Graphics::SetBackground(Palette::White);
     
     MyApp manager;
