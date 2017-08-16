@@ -16,7 +16,7 @@ struct Title : MyApp::Scene  //タイトル画面
     const Texture m_startIcon = Texture(Icon(0xf1ea,300));
     
     const RoundRect m_exitButton = RoundRect(Rect(Arg::center(1600,700),m_buttonSize),m_buttonR);
-    const Texture m_exitIcon = Texture(Icon(0xf2d4,300));
+    const Texture m_exitIcon = Texture(Icon(0xf011,300));
     
     Title(const InitData& init)
     : IScene(init)
@@ -36,13 +36,14 @@ struct Title : MyApp::Scene  //タイトル画面
         }
         else if (m_exitButton.leftClicked())
         {
+            
             System::Exit();//終了する
         }
     }
     
     void draw() const override
     {
-        Graphics::SetBackground(getData().getBackgroundColor());
+        Graphics::SetBackground(Palette::White);
         
         m_fontTitle(L"らくらく読み読み").drawAt(960,260,Palette::Black);
         
