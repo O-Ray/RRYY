@@ -16,6 +16,11 @@
 		2CAAB0F31EE663680000A06D /* lharfbuzz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAB0E21EE663680000A06D /* lharfbuzz.a */; };
 		2CAAB0F51EE663680000A06D /* lturbojpeg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAB0E51EE663680000A06D /* lturbojpeg.a */; };
 		2CAAB0F71EE663680000A06D /* lpng.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAB0E81EE663680000A06D /* lpng.a */; };
+		36F0CB101F44237C00125E52 /* langelscript.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F0CB0E1F44188800125E52 /* langelscript.a */; };
+		36F0CB111F44239F00125E52 /* boost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAB0D81EE663680000A06D /* boost_filesystem.a */; };
+		36F0CB121F44239F00125E52 /* lGLEW.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAB0DE1EE663680000A06D /* lGLEW.a */; };
+		36F0CB131F44239F00125E52 /* libz.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAAB0EA1EE663680000A06D /* libz.a */; };
+		36F0CB141F4423CE00125E52 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F0CB0B1F44183700125E52 /* OpenAL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,11 +52,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36F0CB141F4423CE00125E52 /* OpenAL.framework in Frameworks */,
+				36F0CB101F44237C00125E52 /* langelscript.a in Frameworks */,
+				36F0CB111F44239F00125E52 /* boost_filesystem.a in Frameworks */,
 				2CAAB0ED1EE663680000A06D /* boost_system.a in Frameworks */,
 				2CAAB0EE1EE663680000A06D /* lfreetype.a in Frameworks */,
+				36F0CB121F44239F00125E52 /* lGLEW.a in Frameworks */,
 				2CAAB0F31EE663680000A06D /* lharfbuzz.a in Frameworks */,
 				2CAAB0F51EE663680000A06D /* lturbojpeg.a in Frameworks */,
 				2CAAB0F71EE663680000A06D /* lpng.a in Frameworks */,
+				36F0CB131F44239F00125E52 /* libz.a in Frameworks */,
 				2C45D2D61E004061009EABAA /* libSiv3D.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

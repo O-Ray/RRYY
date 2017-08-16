@@ -42,8 +42,8 @@ struct AppData
         Color(L"#A6AAA9"),
         Color(L"#53585F"),
         Color(L"#000000"),
-        Color(L"#000000"),
-        Color(L"#000000"),
+        Color(L"#ffffff"),
+        Color(L"#ffffff"),
     };
     const Array<ColorF> settingTextColors =//テキストの色のカラー配列
     {
@@ -57,8 +57,8 @@ struct AppData
         Color(L"#A6AAA9"),
         Color(L"#53585F"),
         Color(L"#000000"),
-        Color(L"#000000"),
-        Color(L"#000000"),
+        Color(L"#ffffff"),
+        Color(L"#ffffff"),
     };
     const Array<ColorF> settingBackColors =//背景色のカラー配列
     {
@@ -72,8 +72,8 @@ struct AppData
         Color(L"#35350A"),
         Color(L"#000035"),
         Color(L"#000000"),
-        Color(L"#000000"),
-        Color(L"#000000"),
+        Color(L"#ffffff"),
+        Color(L"#ffffff"),
     };
     int backgroundColorIndex = 5;//背景色のカラー配列index(現在配列の何個目を指定しているか。０〜９)
     int taxtColorIndex = 9;//記事のテキストのカラー配列index(現在配列の何個目を指定しているか。０〜９)

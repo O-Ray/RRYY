@@ -6,7 +6,7 @@
 //禁則処理
 bool TextProhibition(char32_t c)
 {
-    const String ProhibitionList = L"」』）｝】＞≫］ぁぃぅぇぉっゃゅょァィゥェォッャュョ、。,.ゝ々！？：；／ー-";
+    const String ProhibitionList = L"」』）｝】＞≫］》〕ぁぃぅぇぉっゃゅょァィゥェォッャュョ、。,.ゝ々！？：；／ー-";
     return ProhibitionList.includes(c);
 }
 

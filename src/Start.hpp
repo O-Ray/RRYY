@@ -9,11 +9,11 @@ bool IsNewsFile(const FilePath& path)
 
 struct Start : MyApp::Scene //start画面
 {
-    const Circle m_backButton = Circle(960,50,60);//バックボタン
+    const Circle m_backButton = Circle(1500,700,60);//バックボタン
     const Texture m_backIcon = Texture(Icon(0xf112,60));//バックボタンアイコン
     
     
-    const Circle m_reloadButton = Circle(800,50,60);//リロードボタン
+    const Circle m_reloadButton = Circle(1700,700,60);//リロードボタン
     const Texture m_reloadIcon = Texture(Icon(0xf01e,60));//リロードボタンアイコン
     
     const Texture m_dataIcon = Texture(Icon(0xf0c9,45));//横３本
@@ -60,7 +60,7 @@ struct Start : MyApp::Scene //start画面
         
         for (int i = 0; i < articles.size(); ++i)
         {
-            const Rect rect(50,i * 100 + 200 - m_scroll,1200,60);
+            const Rect rect(50,i * 100 + 50 - m_scroll,1200,60);
             if(rect.leftClicked())
             {
                 getData().articlesIndex = i;
@@ -78,7 +78,7 @@ struct Start : MyApp::Scene //start画面
         const auto& articles = getData().articles;
         for (int i = 0; i < articles.size(); ++i)
         {
-            const Rect rect(50,i * 100 + 200 - m_scroll,1200,60);
+            const Rect rect(50,i * 100 + 50 - m_scroll,1200,60);
             rect.draw(Palette::Gray);
             m_newsFont(articles[i].title).draw(rect.pos);
             m_newsPreviewFont(articles[i].getPreview()).draw(rect.x + 800,rect.y + 15);
